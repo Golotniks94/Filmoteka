@@ -1,0 +1,27 @@
+.spinner-box {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.none {
+    display: none;
+}
+
+
+.spinner-box__img {
+    animation: spinner 4s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
