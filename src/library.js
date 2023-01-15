@@ -1,4 +1,5 @@
 // import './sass/main.scss';
+import './js/spinner';
 import './js/modalFilmCard';
 import './js/teamLightbox';
 // import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
