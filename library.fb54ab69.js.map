@@ -1,0 +1,1 @@
+{"mappings":"AAAsBA,SAASC,cAAc","sources":["src/js/spinner.js"],"sourcesContent":["const spinnerBoxRef = document.querySelector('.spinner-box');\n\nexport function spinnerOff() {\nspinnerBoxRef.classList.add('none');\n}\n\nexport function spinnerOn() {\nspinnerBoxRef.classList.remove('none');\n}"],"names":["document","querySelector"],"version":3,"file":"library.fb54ab69.js.map"}
