@@ -1,7 +1,9 @@
 import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-import { BASE_URL } from './apiServis.js';
-import { KEY } from './apiServis.js';
+// import { BASE_URL } from './apiServis.js';
+// import { KEY } from './apiServis.js';
+const BASE_URL = `https://api.themoviedb.org/3`;
+const KEY = `c54d78350d3df927165feb0aabc91c13`;
 
 export default class MoviesApiService {
   constructor() {
