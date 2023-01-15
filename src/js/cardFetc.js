@@ -5,28 +5,27 @@ const newApiService = new NewApiService();
 const gallery = document.querySelector('.gallery');
 
 export default function createMovieCards(movieList) {
-  let other = '';
-
-  for (const movie of movieList) {
-    if (movie.genre_ids.length > 3) {
-      other = movie.genre_ids.slice(0, 2);
-      other[2] = 'Other';
-      other = other.join(', ');
-
-      console.log(other);
-    }
-  }
-
   const markupMovieList = movieList
     .map(movie => {
+      let other = '';
+
+      if (movie.genre_ids.length <= 3) {
+        other = movie.genre_ids.slice(0, 3).join(', ');
+      }
+      if (movie.genre_ids.length > 3) {
+        other = movie.genre_ids.slice(0, 2);
+        other[2] = 'Other';
+        other = other.join(', ');
+      }
+
       return `
-      <a href="" class="movie-link">
+      <a href="${movie.id}" class="movie-link">
         <div class="gallery-card">
           <img class="movie-img" src="https://image.tmdb.org/t/p/original${
             movie.poster_path
           }" width="395" alt="${movie.title}" loading="lazy"/>
           <h2 class="movie-title">${movie.original_title}</h2>
-          <p class="movie-info">${movie.genre_ids.join(', ')} <span>|</span> ${
+          <p class="movie-info">${other} <span>|</span> ${
         movie.release_date.split('-')[0]
       }</p>
         </div>
