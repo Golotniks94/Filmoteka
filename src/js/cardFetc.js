@@ -19,17 +19,17 @@ export default function createMovieCards(movieList) {
       }
 
       return `
+     <li class="gallery-item">
       <a href="${movie.id}" class="movie-link">
-        <div class="gallery-card">
           <img class="movie-img" src="https://image.tmdb.org/t/p/original${
             movie.poster_path
-          }" width="395" alt="${movie.title}" loading="lazy"/>
+          }"  alt="${movie.title}" loading="lazy"/>
           <h2 class="movie-title">${movie.original_title}</h2>
           <p class="movie-info">${other} <span>|</span> ${
         movie.release_date.split('-')[0]
-      }</p>
-        </div>
-      </a>`;
+      }   </p>
+      </a>
+     </li>`;
     })
     .join('');
 
