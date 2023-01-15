@@ -84,22 +84,39 @@ nav {
             margin-right: 0px;
 }
 }
-input {
-  
+.form-search__input {
     min-width: 280px;
-    border: 0.5px solid #FFFFFF;
-    margin-top: 60px;
-    position: relative;
+    background: none;
+    margin: 0;
+    border: none;
+    border-bottom: 0.5px solid #FFFFFF;;
+
 }
-::placeholder {
+
+input::placeholder {
     font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 16px;
-        color: black;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    color: white;
       
 }
-.icon-search {
+.form-search__icon {
+    position: relative;
+    margin-top: 60px;
+  
+   
+    
+}
+.form-search__icon_icon {
     position: absolute;
+        display: flex;
+        align-items: center;
+        top: 0;
+        bottom: 0;
+        cursor: pointer;
+        right: 0;
+ 
+        
 }

@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>My Library</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
         rel="stylesheet">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/main.min.css">
 </head>
 
-<body>
-    <header class="container">
-        <nav>
-            <svg widht="20px" height="20px" aria-label="Logo">
-                <use class="icon-menu" href="/src/images/sprite.svg#icon-film"></use>
-            </svg>
-            <ul class="site-nav site-nav--main list">
-                <li class="site-nav__item site-nav__item--main"><a class="site-nav__link site-nav__link--main link"
-                        href="/src/partials/films-home.html">Home</a></li>
-                <li class="site-nav__item site-nav__item--main"><a
-                        class="site-nav__link site-nav__link--main  site-nav__link--current link"
-                        href="/src/partials/films-library.html">My Library</a></li>
-            </ul>
-        </nav>
-        <input type="text" id="name-input" placeholder="Movie search">
-        <svg widht="8px" height="8px" aria-label="Search">
-            <use class="icon-search" href="/src/images/sprite.svg#icon-search-2"></use>
+<header class="container">
+    <nav>
+        <svg widht="20px" height="20px" viewBox="0 0 100 100" aria-label="Logo">
+            <use class="icon-menu" href="/src/images/sprite.svg#icon-film"></use>
         </svg>
-    </header>
-</body>
+        <ul class="site-nav site-nav--main list">
+            <li class="site-nav__item site-nav__item--main"><a
+                    class="site-nav__link site-nav__link--main link"
+                    href="/src/index.html">Home</a></li>
+            <li class="site-nav__item site-nav__item--main"><a class="site-nav__link site-nav__link--main site-nav__link--current link"
+                    href="/src/library.html">My Library</a></li>
+        </ul>
+    </nav>
+    <div class="form-search__icon">
+        <input type="search" id="name-input" class="form-search__input" placeholder="Movie search">
+
+        <span class="form-search__icon_icon"><svg widht="8px" height="8px" viewBox="0 0 100 100" aria-label="Search">
+                <use class="icon-search" href="/src/images/sprite.svg#icon-search-2"></use>
+            </svg></span>
+    </div>
+
+</header>
