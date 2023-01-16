@@ -13,11 +13,12 @@ oneFilmCard.addEventListener('click', (e)=>{openModal(e);});
 let idFilm = '';
 function openModal(e){
     e.preventDefault();
-    idFilm=e.target.parentElement.parentElement.getAttribute("href");
+    idFilm=e.target.parentElement.getAttribute("href");//підіймаємось на рівень вище, щоб дістати <a>
+    //console.log(idFilm);
 
 movie.getByID(idFilm)
     .then((result) => {
-        console.log(result);
+        //console.log(result);
         let markupOneCard = `<div class="modal-cardFilm" id='${result.id}'>
         <div class="cardFilm__image">
         <img class="image" src="https://image.tmdb.org/t/p/original${result.poster_path}" alt="${result.original_title}"/>
