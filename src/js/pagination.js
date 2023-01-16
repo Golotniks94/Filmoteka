@@ -7,7 +7,7 @@ export function createPagination(total_results) {
   let currentPage = 1;
 
   const options = {
-    totalItems: 100,
+    totalItems: total_results,
     itemsPerPage: 20,
     visiblePages: 5,
     page: currentPage,
