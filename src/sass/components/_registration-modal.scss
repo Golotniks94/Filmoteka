@@ -1,4 +1,4 @@
-a {
+.term-asd {
     cursor: pointer;
     &:hover {
       text-decoration: underline;
@@ -75,6 +75,14 @@ a {
       color: var(--accent-color);
     }
   }
+  .form-check-input{
+        /* min-width: 280px; */
+        border: 0.5px solid #fff;
+        margin-top: 0; 
+        position: relative;
+    
+
+  }
   .text-center:not(:last-child) {
     font-weight: 500;
     font-size: 30px;
@@ -142,14 +150,34 @@ a {
     color: var(--tertiary-color);
   }
   
-  .form-check {
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
+  // .form-check {
+    
+  //   &:not(:last-child) {
+  //     margin-bottom: 10px;
+
+  //   }
+  // }
+  .position-check {
+    font-family: Roboto;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.67;
+      letter-spacing: 0.03em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+
+  }
+  .justify-content-center {
+    justify-content: center;
+
   }
   .form-check-input {
     accent-color:#FF6B01;
     cursor: pointer;
+    margin-bottom: 0;
   }
   
   .form-check-label {

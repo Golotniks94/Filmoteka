@@ -37,7 +37,7 @@ const formButtonLogInRef = document.querySelector('.btn__login');
 const formRef = document.querySelector('.form');
 let firstPassInputRef = document.querySelector('#firstPass');
 let userEmailInputRef = document.querySelector('#userEmail');
-let libraryLinkRef = document.querySelector('.library-link');
+let libraryLinkRef = document.querySelector('#library-link');
 
 formButtonSignUpRef.disabled = true;
 
