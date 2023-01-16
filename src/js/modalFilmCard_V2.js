@@ -47,7 +47,7 @@ movie.getByID(idFilm)
         <button class="cardFilm__button" id="watched" name="watched" value="${result}">
                 Add to watched
             </button>
-            <button class="cardFilm__button" id="queue" name="watched" value="${result}">
+            <button class="cardFilm__button" id="queue" name="queue" value="${result}">
                 Add to queue
             </button>
         </div>
