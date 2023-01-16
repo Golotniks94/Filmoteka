@@ -1,6 +1,7 @@
 import './js/spinner';
 import './sass/main.scss';
 import './js/modalFilmCard.js';
+import './js/modalFilmCard_V2';
 import './js/cardFetc.js';
 import './js/teamLightbox';
 import './js/pagination.js';
