@@ -1,104 +1,99 @@
-import axios from "axios";
-import { Notify } from "notiflix/build/notiflix-notify-aio";
-// import { BASE_URL } from './apiServis.js';
-// import { KEY } from './apiServis.js';
-const BASE_URL = `https://api.themoviedb.org/3`;
-const KEY = `c54d78350d3df927165feb0aabc91c13`;
+import { fetchSearchArticlesPages, fetchGenres } from './apiServis';
+import { createMovieCards } from './cardFetc';
+import Notiflix from 'Notiflix';
 
-export default class MoviesApiService {
-  constructor() {
-    this.page = 1;
-    this.searchQuery = '';
-    this.lang = '';
-    this.genre = '';
-    this.year = '';
-    this.originalLanguage = '';
-    this.vote = '';
-  }
+const refs = {
+  moviesOnInputList: document.querySelector('.gallery'),
+  inputEl: document.querySelector('.form-search__input'),
+};
 
-// Популярні фільми
-  async getPopularMovies() {
-    try {
-      const url = `${BASE_URL}movie/popular?api_key=${KEY}&language=${this.lang}&page=${this.page}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      Notify.failure('Oops, an error occurred');
-    }
-  }
+refs.inputEl.addEventListener('submit', searchHandler);
 
-// Тренди тижня   
-  async getTrendMovies() {
-    try {
-      const url = `${BASE_URL}trending/movie/week?api_key=${KEY}&language=${this.lang}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      Notify.failure('Oops, an error occurred');
-    }
+async function searchHandler(e) {
+  e.preventDefault();
+  const query = e.currentTarget.elements.searchQuery.value;
+  if (query === ' ' || query === '') {
+    Notiflix.Notify.failure('Please type search and try again.');
+    return;
   }
+  const data = await fetchSearchArticlesPages(query);
+  refs.moviesOnInputList.innerHTML = '';
+  if (data.total_results === 0) {
+    Notiflix.Notify.failure('There is no such film');
+    return;
+} else {
+    const genre = await fetchGenres().then(({ genres }) => {
+      if (data.results) {
+        data.results.forEach(movie => {
+          const { genre_ids, release_date } = movie;
+          genres.forEach(({ name, id }) => {
+            if (genre_ids.includes(id)) {
+              if (genre_ids.length > 2) {
+                genre_ids.splice(2, genre_ids.length - 1, 'Other');
+              }
+              genre_ids.splice(genre_ids.indexOf(id), 1, name);
+            }
+            movie.genre_names = genre_ids.join(', ');
+            if (movie.release_date) {
+              movie.release_date = release_date.slice(0, 4);
+            }
+          });
+        });
+      }
+    });
 
-  async getMoviesByKey() {
-    try {
-      const searchParams = new URLSearchParams({
-        api_key: 'c54d78350d3df927165feb0aabc91c13',
-        query: this.searchQuery,
-        language: 'en-US',
-        page: this.page,
-        include_adult: false,
-      });
-      const url = `${BASE_URL}search/movie?${searchParams}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      return error;
-    }
-  }
-// Повна інформація про фільм
-  async getMovieDetails(id) {
-    try {
-      const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=${this.lang}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      Notify.failure('Oops, an error occurred');
-    }
-  }
-
-// Можливий трейлер
-  async getMovieVideo(id) {
-    try {
-      const url = `${BASE_URL}movie/${id}/videos?api_key=${KEY}&language=${this.lang}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      Notify.failure('Oops, an error occurred');
-    }
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
-
-  get query() {
-    return this.searchQuery;
-  }
-
-  setLang(newLang) {
-    this.lang = newLang;
-  }
-
-  getLang() {
-    return this.lang;
-  }
-
-  incrementPage() {
-    this.page += 1;
-  }
-  decrementPage() {
-    this.page -= 1;
-  }
-  resetPage() {
-    this.page = 1;
+    createMovieCards(data.results);
   }
 }
+
+
+// import { Notify } from "notiflix/build/notiflix-notify-aio";
+// import NewApiService from "./apiServis";
+// import { createMovieCards } from './cardFetc';
+// import { pagination } from './pagination';
+
+// const newApiService = new NewApiService();
+
+// const searchForm = document.querySelector('.form-search__icon');
+// const inputEl = document.querySelector('.form-search__input');
+
+// inputEl.addEventListener('click', onSearchFormReset);
+// searchForm.addEventListener('submit', onSearchFormSubmit);
+
+// function onSearchFormReset() {
+//   if (newApiService.query !== '') {
+//     refs.searchForm.reset();
+//     return;
+//   }
+// }
+// export async function onSearchFormSubmit(e) {
+//   e.preventDefault();
+
+//   newApiService.page = 1;
+//   newApiService.query = inputEl ? inputEl.value.trim() : '';
+//   localStorage.setItem('input-value', newApiService.query);
+
+//   if (newApiService.query === '') {
+//     return;
+//   }
+
+//   const results = await newApiService.getSearchFilms();
+//   newApiService.totalResults = results.total_results;
+//   try {
+//     createMovieCards(results);
+
+//    pagination.reset(results.total_results);
+
+//     if (newApiService.totalResults === 0) {
+//       Notify.failure(
+//         'Sorry, there are no films matching your search query. Please try again.'
+//       );
+//       return;
+//     }
+//     if (newApiService.totalResults >= 1) {
+//       Notify.success(`Hooray! We found ${newApiService.totalResults} films.`);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
