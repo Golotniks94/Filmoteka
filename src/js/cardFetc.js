@@ -1,8 +1,9 @@
 import NewApiService from './apiServis';
+import { createPagination } from './pagination';
 
 const newApiService = new NewApiService();
 
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('#gallery');
 
 export default function createMovieCards(movieList) {
   const markupMovieList = movieList
