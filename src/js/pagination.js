@@ -1,13 +1,13 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 
 const container = document.querySelector('#pagination');
+const gallery = document.querySelector('.gallery-films');
 
 export function createPagination(total_results) {
   let currentPage = 1;
 
   const options = {
-    totalItems: total_results,
+    totalItems: 100,
     itemsPerPage: 20,
     visiblePages: 5,
     page: currentPage,
@@ -36,9 +36,17 @@ export function createPagination(total_results) {
   const pagination = new Pagination(container, options);
 
   pagination.on('afterMove', event => {
-    const currentPage = event.page;
+    currentPage = event.page;
     console.log(currentPage);
   });
 }
 
-// createPagination();
+createPagination();
+
+// pagination.on('beforeMove', async event => {
+//   currentPage = event.page;
+//   gallery.innerHTML = '';
+//   const newData = await createMovieCards(currentPage, query);
+//   const newList = await createCards(newData.results);
+//   gallery.insertAdjacentHTML('beforeend', newList);
+// });
