@@ -27,3 +27,11 @@
         transform: rotate(360deg);
     }
 }
+
+.active {
+    background-color: #ff6b01;
+    border-color: #ff6b01;
+    color:  #fff;
+    transform: scale(1.05);
+}
+

@@ -46,9 +46,9 @@ export default class ApiData{
         .catch(function (error) {
             // обробка помилки
             result={
-                data:               null,
-                status:             'error',//помилка виконанння
-                error:              error,
+                data:null,
+                status:'error',//помилка виконанння
+                error:error,
             };
         })
         .then(function () {
