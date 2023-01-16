@@ -1,4 +1,4 @@
-.container {
+.container--header {
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
@@ -36,14 +36,27 @@
 (min-resolution: 192dpi),
 (min-resolution: 2dppx) {
     header {
+       
         background-image:url(/src/images/header-mob-1x.png);
         background-repeat: no-repeat;
     }
 }
 header {
     height: 230px;
+  
     background-position: center;
     background-size: cover;
+    @media screen and (min-width: 768px) {
+        background-image: url(/src/images/header-tabl-1x.png);
+            background-repeat: no-repeat;
+            height: 216px;
+
+}
+  @media screen and (min-width: 1280px) {
+      background-image: url(/src/images/header-desk-1x.png);
+      background-repeat: no-repeat;
+
+  }
 }
 nav {
     display: flex;
@@ -52,6 +65,32 @@ nav {
     padding-top: 44px;
       
 }
+.logo {
+    display: flex;
+    align-items: center;
+    
+  
+}
+
+.logo--name {
+    display: none;
+    @media screen and (min-width: 768px) {
+        display:inline-block;
+            
+           
+            font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 1.17;
+              
+                text-align: center;
+            
+                color: #FFFFFF;
+                margin-left: 10px;
+    }
+}
+
 .site-nav {
     display: flex;
 }
@@ -89,7 +128,11 @@ nav {
     background: none;
     margin: 0;
     border: none;
-    border-bottom: 0.5px solid #FFFFFF;;
+    border-bottom: 0.5px solid #FFFFFF;
+    @media screen and (min-width: 768px) {
+            min-width: 336px;
+           
+        }
 
 }
 
@@ -105,6 +148,12 @@ input::placeholder {
 .form-search__icon {
     position: relative;
     margin-top: 60px;
+    max-width: 280px;
+    @media screen and (min-width: 768px) {
+            max-width: 336px;
+            margin-left: auto;
+                margin-right: auto;
+        }
   
    
     
