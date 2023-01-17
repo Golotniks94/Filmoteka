@@ -38,9 +38,9 @@ export default function createMovieCards(movieList) {
 }
 
 export function fetchMovieList() {
-  newApiService.fetchPopularArticles().then(result => {
+  newApiService.fetchPopularArticles().then(({ results, total_results }) => {
     newApiService.fetchGenres().then(list => {
-      result.map(result => {
+      results.map(result => {
         let x = result.genre_ids.map(id => {
           for (let i = 0; i < list.length; i++) {
             if (list[i].id === id) {
@@ -53,7 +53,8 @@ export function fetchMovieList() {
         result.genre_ids = x;
       });
 
-      createMovieCards(result);
+      createMovieCards(results);
+      createPagination(fetchMovieList, newApiService, total_results);
     });
   });
 }

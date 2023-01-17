@@ -9,8 +9,8 @@ export default class NewApiService {
     const url = `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${this.page}`;
     return fetch(url)
       .then(response => response.json())
-      .then(({ results }) => {
-        return results;
+      .then(data => {
+        return data;
       });
   }
   fetchSearchArticles() {
