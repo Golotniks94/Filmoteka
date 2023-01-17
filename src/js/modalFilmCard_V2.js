@@ -2,10 +2,14 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import MoviesApiService from './keyWordSearch';
 import ApiData from './ApiData';//для пошуку по ID
+import LibraryStorage from "./LibraryAPI";
+//import { result } from 'lodash';
 
 
 //const moviesApiService = new MoviesApiService();
-const movie=new ApiData();
+const movie=new ApiData();// для відправки запитів про фільми
+const watchedStor=new LibraryStorage("Watched");// для роботи з  local storage
+const queueStor=new LibraryStorage("Queue");
 
 const oneFilmCard = document.querySelector('.gallery');
 oneFilmCard.addEventListener('click', (e)=>{openModal(e);});
@@ -59,9 +63,17 @@ movie.getByID(idFilm)
         
         modal.show();
         
-        const closeModalBtn = document.querySelector('.modal-close-btn')
-        
-        closeModalBtn.addEventListener('click', closeModal)
+        const closeModalBtn = document.querySelector('.modal-close-btn');
+
+
+
+        const addToWatchedBtn=document.querySelector("#watched");
+        const addToQueueBtn= document.querySelector("#queue");
+
+        addToWatchedBtn.onclick=addToWatched;
+        addToQueueBtn.onclick=addToQueue;
+
+        closeModalBtn.addEventListener('click', closeModal);
         
         window.addEventListener('keydown', closeHandlerModal)
         
@@ -77,10 +89,19 @@ movie.getByID(idFilm)
         
         window.removeEventListener('keydown', closeHandlerModal)
         }  
-        
+//------------buttons functions--------------------------------        
+        function addToQueue(){
+            console.log(result);
+            queueStor.saveFilmData(result)
+            addToQueueBtn.setAttribute("disabled","disabled");
+        }
 
-        const addToWatchBtn = document.querySelector('click', onAddToWatchBtn)
-        const addToQueueBtn = document.querySelector('click', onAddToQueueBtn)
+        function addToWatched(){
+            console.log(result);
+            watchedStor.saveFilmData(result)
+            addToWatchedBtn.setAttribute("disabled","disabled");
+        }
+//---------END---buttons functions--------------------------------  
     })
     .catch(error => {
     console.error()})
@@ -89,6 +110,7 @@ movie.getByID(idFilm)
 function openGenrs(mass){
     return mass.map(gener=>gener.name).join(", ");
 }
+
 //----------------------------------------------------------------------------------
 //-------------лишнє----------------------
 /*function fetchById() {
