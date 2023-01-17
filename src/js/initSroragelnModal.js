@@ -11,7 +11,7 @@ console.log(btnWatch);
 btnWatch.addEventListener('click', addWatchList);
 btnQueue.addEventListener('click', addQueueList)
 // Функція зміни тексту кнопок Watched/Queue
-function textModalBtn(id) {
+export function textModalBtn(id) {
     const btnQueue = document.querySelector('#queue');
     const btnWatch = document.querySelector('#watched');
     if (inList(id, 'watched')) {
@@ -45,7 +45,7 @@ function textModalBtn(id) {
 }
 
 // Додаємо фільм в лист переглянутих
-function addWatchList() {
+export function addWatchList() {
     const btnWatch = document.querySelector('#watched');
     let id = btnWatch.dataset.action;
     console.log(id);
@@ -83,7 +83,7 @@ function addWatchList() {
 }
 
 // Видалення з листа перглянутих
-function removeFromWatchedList(id) {
+export function removeFromWatchedList(id) {
     console.log('delete from watched');
     let watchList = [];
     let localWatchListJson = load('watched');
@@ -100,7 +100,7 @@ function removeFromWatchedList(id) {
 }
 
 // Додаємо в лист бажаних для перегляду
-function addQueueList() {
+export function addQueueList() {
     const btnQueue = document.querySelector('#queue');
     let id = btnQueue.dataset.action;
     if (btnQueue.classList.contains('active')) {
@@ -137,7 +137,7 @@ function addQueueList() {
 }
 
 // Видаляємо з листа бажаних
-function removeFromQueueList(id) {
+export function removeFromQueueList(id) {
     console.log('delete from queue');
     let queueList = [];
     let localQueueListJson = load('queue');
@@ -154,7 +154,7 @@ function removeFromQueueList(id) {
 }
 
 
-function inList(id, list) {
+export function inList(id, list) {
     let arrList = [];
     let localListJson = load(list);
     if (localListJson) {
