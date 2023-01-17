@@ -28,12 +28,13 @@ movie.getByID(idFilm)
         <p class="cardFilm__vote cardFilm__text">
             Vote / Votes<span class="cardFilm__vote_average">${result.vote_average}</span>/<span class="cardFilm__vote_count">${result.vote_count}</span>
         </p>
-        <p class="cardFilm__popularity cardFilm_text">
+        <p class="cardFilm__popularity cardFilm__text">
             Popularity<span class="cardFilm___data">${result.popularity}</span>
         </p>
-        <p class="cardFilm-title cardFilm__text">
-            Original Title<span class="cardFilm__title_data">${result.original_title}</span>
-            </p>
+        <div class="title__wrapper"><p class="cardFilm-title cardFilm__text">
+            Original Title</p>
+            <p class="cardFilm__title_data">${result.original_title}</p>
+        </div>
         <div class="genres">
             <p class="cardFilm__genre cardFilm__text">
                 Genre 
