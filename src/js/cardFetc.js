@@ -1,5 +1,6 @@
 import NewApiService from './apiServis';
 import { createPagination } from './pagination';
+import { spinnerOff, spinnerOn } from './spinner';
 
 const newApiService = new NewApiService();
 
@@ -52,7 +53,7 @@ export function fetchMovieList() {
 
         result.genre_ids = x;
       });
-
+      spinnerOff();
       createMovieCards(results);
       createPagination(fetchMovieList, newApiService, total_results);
     });
@@ -60,6 +61,7 @@ export function fetchMovieList() {
 }
 
 export async function fetchAndCreateCardsList() {
+  spinnerOn();
   try {
     const cardList = await fetchMovieList(createMovieCards);
   } catch (error) {

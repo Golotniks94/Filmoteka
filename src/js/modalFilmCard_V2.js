@@ -3,6 +3,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import MoviesApiService from './keyWordSearch';
 import ApiData from './ApiData';//для пошуку по ID
 import LibraryStorage from "./LibraryAPI";
+import { spinnerOff } from './spinner';
 //import { result } from 'lodash';
 
 
@@ -102,6 +103,7 @@ movie.getByID(idFilm)
             watchedStor.saveFilmData(result)
             addToWatchedBtn.setAttribute("disabled","disabled");
         }
+        spinnerOff();
 //---------END---buttons functions--------------------------------  
     })
     .catch(error => {

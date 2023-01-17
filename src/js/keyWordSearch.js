@@ -1,7 +1,7 @@
 import { fetchSearchArticlesPages, fetchGenres } from './apiServis';
 import { createMovieCards } from './cardFetc';
 import Notiflix from 'notiflix';
-
+import { spinnerOn, spinnerOff } from './spinner';
 const refs = {
   moviesOnInputList: document.querySelector('.gallery'),
   inputEl: document.querySelector('.form-search__input'),
@@ -10,6 +10,7 @@ const refs = {
 refs.inputEl.addEventListener('submit', searchHandler);
 
 async function searchHandler(e) {
+  spinnerOn();
   e.preventDefault();
   const query = e.currentTarget.elements.searchQuery.value;
   if (query === ' ' || query === '') {
@@ -43,6 +44,7 @@ async function searchHandler(e) {
     });
 
     createMovieCards(data.results);
+    spinnerOff();
   }
 }
 
