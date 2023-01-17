@@ -1,6 +1,6 @@
 import { fetchSearchArticlesPages, fetchGenres } from './apiServis';
 import { createMovieCards } from './cardFetc';
-import Notiflix from 'Notiflix';
+import Notiflix from 'notiflix';
 
 const refs = {
   moviesOnInputList: document.querySelector('.gallery'),
@@ -21,7 +21,7 @@ async function searchHandler(e) {
   if (data.total_results === 0) {
     Notiflix.Notify.failure('There is no such film');
     return;
-} else {
+  } else {
     const genre = await fetchGenres().then(({ genres }) => {
       if (data.results) {
         data.results.forEach(movie => {
@@ -45,7 +45,6 @@ async function searchHandler(e) {
     createMovieCards(data.results);
   }
 }
-
 
 // import { Notify } from "notiflix/build/notiflix-notify-aio";
 // import NewApiService from "./apiServis";
