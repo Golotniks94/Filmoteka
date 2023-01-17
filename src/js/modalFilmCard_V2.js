@@ -58,7 +58,7 @@ movie.getByID(idFilm)
             </button>
         </div>
     </div>
-    <div class="modal-close-btn">Close</div>
+    <button type='button' class="modal-close-btn">X</button>
 </div>`;
         //console.log(markupOneCard);
         const modal = basicLightbox.create(markupOneCard);
