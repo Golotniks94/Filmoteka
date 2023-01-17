@@ -1,16 +1,18 @@
 import Pagination from 'tui-pagination';
 
 const container = document.querySelector('#pagination');
-const gallery = document.querySelector('.gallery-films');
+const gallery = document.querySelector('.gallery');
 
-export function createPagination(total_results) {
-  let currentPage = 1;
-
+export function createPagination(
+  onPageChange,
+  apiServiceInstance,
+  totalItems = 0
+) {
   const options = {
-    totalItems: total_results,
+    totalItems,
     itemsPerPage: 20,
     visiblePages: 5,
-    page: currentPage,
+    page: apiServiceInstance.page,
     centerAlign: true,
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
@@ -36,12 +38,11 @@ export function createPagination(total_results) {
   const pagination = new Pagination(container, options);
 
   pagination.on('afterMove', event => {
-    currentPage = event.page;
-    console.log(currentPage);
+    gallery.innerHTML = '';
+    apiServiceInstance.page = event.page;
+    onPageChange();
   });
 }
-
-createPagination();
 
 // pagination.on('beforeMove', async event => {
 //   currentPage = event.page;
