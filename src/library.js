@@ -1,4 +1,4 @@
-// import './sass/main.scss';
+import './sass/main.scss';
 import './js/spinner';
 //import './js/modalFilmCard';
 import './js/modalFilmCard_V2';
