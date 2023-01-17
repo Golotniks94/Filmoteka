@@ -1,4 +1,5 @@
 .container--header {
+    
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
@@ -13,6 +14,8 @@
 
     @media screen and (min-width: 768px) {
         width: 768px;
+        padding-left: 33px;
+            padding-right: 33px;
 
     }
 
@@ -31,32 +34,73 @@
 .link {
     text-decoration: none;
 }
-@media (min-device-pixel-ratio: 2),
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi),
-(min-resolution: 2dppx) {
-    header {
-       
-        background-image:url(/src/images/header-mob-1x.png);
-        background-repeat: no-repeat;
-    }
-}
+
+
 header {
+    width: 100%;
     height: 230px;
-  
+    background-image: url(/src/images/header-mob-1x.png);
+    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    margin: 0 auto;
+    @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url(/src/images/header-mob-2x.png);
+        }
     @media screen and (min-width: 768px) {
-        background-image: url(/src/images/header-tabl-1x.png);
-            background-repeat: no-repeat;
             height: 216px;
+            background-image: url(/src/images/header-tabl-1x.png);
+            @media (min-device-pixel-ratio: 2),
+                (min-resolution: 192dpi),
+                (min-resolution: 2dppx) {
+                    background-image: url(/src/images/header-tabl-2x.png);
+                }
 
 }
-  @media screen and (min-width: 1280px) {
-      background-image: url(/src/images/header-desk-1x.png);
-      background-repeat: no-repeat;
+@media screen and (min-width: 1280px) {
+    background-image: url(/src/images/header-desk-2x.png);
+    @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url(/src/images/header-desk-2x.png);
+        }
+}
+}
+.header--library {
+  
+        background-image: url(/src/images/library-mob-1x.jpg);
+      
+    
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url(/src/images/library-mob-2x.jpg);
+        }
+    
+        @media screen and (min-width: 768px) {
+            height: 216px;
+            background-image: url(/src/images/library-tabl-1x.jpg);
+    
+            @media (min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+                background-image: url(/src/images/library-tabl-2x.jpg);
+            }
+    
+        }
+    
+        @media screen and (min-width: 1280px) {
+            background-image: url(/src/images/library-desk-1x.jpg);
+    
+            @media (min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+                background-image: url(/src/images/library-desk-1x.jpg);
+            }
+        }
 
-  }
 }
 nav {
     display: flex;
@@ -93,6 +137,7 @@ nav {
 
 .site-nav {
     display: flex;
+    align-items: center;
 }
 .site-nav__link {
     display: flex;
@@ -106,6 +151,7 @@ nav {
     color: #FFFFFF;
     position: relative;
     cursor: pointer;
+  
 }
 .site-nav__link--current::after {
     content: '';
@@ -128,6 +174,12 @@ nav {
     background: none;
     margin: 0;
     border: none;
+    color: white;
+    font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.14;
     border-bottom: 0.5px solid #FFFFFF;
     @media screen and (min-width: 768px) {
             min-width: 336px;
@@ -168,4 +220,24 @@ input::placeholder {
         right: 0;
  
         
+}
+.auth-btn {
+    display: inline-block;
+        border-radius: 4px;
+        padding: 5px 5px;
+        min-width: 30px;
+        border: 0.5px solid #FFFFFF;
+        cursor: pointer;
+        color: white;
+        background: none;
+        display: flex;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.17;
+            text-align: center;
+            text-transform: uppercase;
+            margin-right: 10px;
+
 }
