@@ -18,7 +18,7 @@ let idFilm = '';
 function openModal(e){
     e.preventDefault();
     idFilm=e.target.parentElement.getAttribute("href");//підіймаємось на рівень вище, щоб дістати <a>
-    //console.log(idFilm);
+    console.log(idFilm);
 
 movie.getByID(idFilm)
     .then((result) => {
