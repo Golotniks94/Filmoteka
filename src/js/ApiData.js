@@ -1,4 +1,5 @@
 import axios from "axios";
+import { spinnerOn } from "./spinner";
 export default class ApiData{
     constructor(){
         this.query="";
@@ -12,6 +13,7 @@ export default class ApiData{
     //=================================================================================================
     async getByID(id){
         //console.log(id);
+        spinnerOn();
         var res;
         if(id!==null&&id!==undefined){
             await this.getData(`${this.defURL}/${this.mediaType}/${id}?api_key=${this.defKEY}&language=en-US`).then(result=>{
