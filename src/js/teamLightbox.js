@@ -1,13 +1,16 @@
 const openTeamModalLink = document.querySelector(".js-team-modal");
 const modalTeam = document.querySelector("[data-team-modal]");
 const closeModalTeamBtn = document.querySelector(".team-modal__close-btn")
-console.log(openTeamModalLink);
-console.log(modalTeam);
-console.log(closeModalTeamBtn);
+
 openTeamModalLink.addEventListener("click", openTeamModal);
-closeModalTeamBtn.addEventListener("click", openTeamModal);
+closeModalTeamBtn.addEventListener("click", closeTeamModal);
 
 function openTeamModal (){
-    console.log(openTeamModalLink);
     modalTeam.classList.toggle("is-hidden");
+    document.body.style.position = 'fixed';
+}
+
+function closeTeamModal (){
+    modalTeam.classList.toggle("is-hidden");
+    document.body.style.position = '';
 }
