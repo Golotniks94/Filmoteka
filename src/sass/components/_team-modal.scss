@@ -11,7 +11,7 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.backdrop.is-hidden {
+.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -23,7 +23,7 @@
   top: 50%;
   left: 50%;
   width: 280px;
-  height: 540px;
+  height: 750px;
   transform: translate(-50%, -50%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: #D7D4D4;
@@ -71,12 +71,13 @@
 
 .team-modal__list {
   list-style: none;
+  padding-left: 0px;
 }
 
 .team-modal__item {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   padding-top: 5px;
   background-color: #ffffff;
 }
