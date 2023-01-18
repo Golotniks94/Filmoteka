@@ -56,14 +56,14 @@ function openModal(e){
                 Popularity<span class="cardFilm___data">${roundToTenth(result.popularity)}</span>
             </p>
             <div class="title__wrapper"><p class="cardFilm-title cardFilm__text">
-                Original Title</p>
+                Original <br>Title</br></p>
                 <p class="cardFilm__title_data">${result.original_title}</p>
             </div>
             <div class="genres">
                 <p class="cardFilm__genre cardFilm__text">
                     Genre 
                 </p>
-                <p class="cardItem__genreList">${openGenrs(result.genres)}</p>
+                <p class="cardFilm__genreList">${openGenrs(result.genres)}</p>
             </div>
             <p class="cardFilm__about">About</p>
             <p class="cardFilm__description">${result.overview}
