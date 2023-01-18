@@ -1,11 +1,14 @@
 
+.basicLightbox--visible {
+  overflow-y: scroll;
+}
 
 @media screen and (max-width: 767px) {
   .modal-cardFilm {
     position: relative;
 
     background-color: #ffffff;
-    width: 320px;
+    width: 280px;
     margin-top: 350px;
   }
 }
@@ -16,38 +19,44 @@
 
 .image {
   display: block;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 48px;
-  width: 260px;
-  height: 404px;
+  width: 240px;
   border-radius: 5px;
- 
+}
+.cardFilm__image{
+  padding-right: 20px;
+  margin-left: 20px;
+  padding-top: 48px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .image{
   width: 264px;
-  height: auto;
-  width: 264px;
-  height: auto;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .cardFilm__image{
   margin-top: 40px;
   margin-left: 36px;
-  padding-top: 0;
-  padding-bottom: 40px;
+  margin-bottom: 40px;
+  padding: 0;
 }
 }
-
 @media screen and (min-width: 1200px) {
   .image {
-  width: 375px;
-  height: auto;
-  margin: 40px 12px 40px 12px;
+    width: 375px;
+    
+  }
+}
+@media screen and (min-width: 1200px) {
+  .cardFilm__image {
+  margin-bottom: 40px;
+  margin-left: 16px;
+  margin-top: 40px;
   padding: 0;
   }
 }
 .cardFilm__wrapper {
-  padding: 20px;
+  padding: 20px 20px 40px;
 }
 
 .cardFilm__name {
@@ -85,6 +94,7 @@
 
 .title__wrapper{
   display: flex;
+  // justify-content: flex-start;
 }
 .cardFilm__text {
   color: #8d8d8d;
@@ -125,30 +135,34 @@
 }
 
 .cardFilm__title_data {
-  margin-left: 50px;
+  margin-left: 75px;
   text-transform: uppercase;
   color: rgb(0, 0, 0);
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+}
 
-
+@media screen and (min-width: 768px){
+  .cardFilm__title_data{
+    margin-left: 75px;
+  }
 }
 
 .cardFilm__genre {
   display: inline-block;
-  margin-right: 84px;
-  @media screen and (min-width: 320px) and (max-width: 480px) {
+  margin-right: 85px;
+  @media screen and (min-width: 767px)  {
     margin-right: 90px;
   }
 }
 
-.cardItem__genre_data {
-  color: rgb(0, 0, 0);
-  margin-right: 5px;
-}
+// .cardItem__genre_data {
+//   color: rgb(0, 0, 0);
+//   margin-right: 5px;
+// }
 
-.cardItem__genreList {
+.cardFilm__genreList {
   
   font-family: 'Roboto';
   font-style: normal;
@@ -159,6 +173,11 @@
   color:black;
 }
 
+@media screen and (min-width: 768px){
+  .cardFilm__genre{
+    margin-right: 85px;
+  }
+}
 .cardFilm__about {
   text-transform: uppercase;
   font-family: 'Roboto';
@@ -185,15 +204,15 @@
 .cardFilm__listButton {
   display: flex;
   text-align: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
   margin-top: 20px;
+  justify-content: center;
   
 }
 
 @media screen and (min-width: 1199px) {
   .cardFilm__listButton {
     justify-content: flex-start;
+    text-align: center;
   }
 }
 
@@ -237,7 +256,7 @@
 @media screen and (min-width: 768px) {
   .modal-cardFilm {
     background-color: #ffffff;
-    width: 720px;
+    width: 704px;
     margin-top: 0px;
     display: flex;
   }
@@ -245,7 +264,7 @@
 @media screen and (min-width: 1199px) {
   .modal-cardFilm {
     background-color: #ffffff;
-    width: 810px;
+    width: 806px;
     margin-top: 0px;
     display: flex;
   }
@@ -255,17 +274,17 @@
   @media screen and (min-width: 768px) and (max-width: 1199px){
   .cardFilm__wrapper {
     width: 375px;
-    margin-left: 68px;
-    margin-right: 72px;
-    margin-top: 20px;
-    padding: 0;
+    padding-left: 68px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 29px;
 }}
 
 @media screen and (min-width: 1200px){
   .cardFilm__wrapper {
     width: 806px;
-    padding: 0;
-    margin: 40px 12px 40px 12px;
+    // padding: 0;
+    padding: 40px 12px 40px 16px;
   }
 }
 
@@ -292,4 +311,5 @@
   }
 }
  
+
 
