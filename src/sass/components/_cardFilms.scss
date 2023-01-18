@@ -13,7 +13,7 @@
     margin-right: auto;
     margin-left: auto;
     gap: 32px;
-    padding: 60px 32px;
+    padding: 60px 25px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -93,12 +93,14 @@
   color: #000000;
 
   @media screen and (min-width: 768px) {
+    max-width: 335px;
     line-height: 16px;
     margin-top: 8px;
     margin-bottom: 0;
   }
 
   @media screen and (min-width: 1280px) {
+    max-width: 393px;
     font-size: 20px;
     line-height: 24px;
     margin-top: 12px;
