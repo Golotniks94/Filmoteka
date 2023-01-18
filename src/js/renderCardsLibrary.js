@@ -1,13 +1,14 @@
+import {roundToTenth} from "./roundingNumFunction";
 //=========================render--functions==========================
 export default function renderCardV2(info){
-    return info.map((info)=>
-    `<li class="gallery-item">
+    return info.map((info)=>{
+    return `<li class="gallery-item">
         <a href="${info.id}" class="movie-link">
             <img class="movie-img" src="https://image.tmdb.org/t/p/original${info.poster_path}"  alt="${info.title}" loading="lazy"/>
             <h2 class="movie-title">${info.original_title}</h2>
-            <p class="movie-info">${getObjectGeners(info.genres)} <span>|</span> ${info.release_date.split('-')[0]}   </p>
+            <p class="movie-info">${getObjectGeners(info.genres)} <span>|</span> ${info.release_date.split('-')[0]}<span class="movie-info__vote_average">${roundToTenth(info.vote_average)}</span></p>
         </a>
-    </li>`
+    </li>`}
 ).join("");
 }
 
