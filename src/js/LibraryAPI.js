@@ -3,6 +3,7 @@ export default class LibraryStorage{
     constructor(storageKey){
         this.key=storageKey;
         this.storage="";
+        this.totalRecords=0;
     }
     saveFilmData(filmDataObject){
         let boof=new Array();
@@ -50,6 +51,10 @@ export default class LibraryStorage{
     initializationStorage(){
         this.storage=load(this.key);
         if(this.storage!==""&&this.storage!==undefined){
+            this.totalRecords=this.storage.length;
+            if(this.storage.length===0){
+                return false;
+            }
             return true;
         }
         else{
@@ -57,12 +62,26 @@ export default class LibraryStorage{
         }
     } 
 
+    existsFilmByID(id){
+        if(this.initializationStorage()){
+            let x=this.storage.findIndex(elment=>elment.id===id);
+            return x;
+        }
+        else{
+            return ;
+        }
+    }
+
     loadFromStorage(){
         return load(this.key);
     }
 
     removeStorage(){
         return remove(this.key);
+    }
+
+    getTotalRecords(){
+        return this.totalRecords;
     }
 }
 /*

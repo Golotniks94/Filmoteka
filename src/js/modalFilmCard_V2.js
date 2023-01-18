@@ -18,14 +18,31 @@ let idFilm = '';
 function openModal(e){
     e.preventDefault();
     idFilm=e.target.parentElement.getAttribute("href");//підіймаємось на рівень вище, щоб дістати <a>
-    console.log(`id=${idFilm}`);
-    console.log(idFilm);
+    //console.log(`id=${idFilm}`);
+    //console.log(idFilm);
 
     if(idFilm!==null&&idFilm!==""){
             movie.getByID(idFilm)
         .then((result) => {
-            console.log(result);
-            
+            //console.log(result);
+            let watchedBtnStatus={
+                status: "add",
+                text:   "Add to watched",
+            };
+            let queueBtnStatus={
+                status: "add",
+                text:   "Add to queue",
+            };
+
+            if(queueStor.existsFilmByID(result.id)>=0){
+                queueBtnStatus.status="remove";
+                queueBtnStatus.text="Remove from queue";
+            }
+            if(watchedStor.existsFilmByID(result.id)>=0){
+                watchedBtnStatus.status="remove";
+                watchedBtnStatus.text="Remove from watched";
+            }
+
             let markupOneCard = `<div class="modal-cardFilm" id='${result.id}'>
             <div class="cardFilm__image">
             <img class="image" width="320" src="https://image.tmdb.org/t/p/original${result.poster_path}" alt="${result.original_title}"/>
@@ -52,17 +69,17 @@ function openModal(e){
             <p class="cardFilm__description">${result.overview}
             </p>
             <div class="cardFilm__listButton">
-            <button class="cardFilm__button" id="watched" data-status="add" name="watched" value="${result.id}">
-                    Add to watched
+            <button class="cardFilm__button" id="watched" data-status="${watchedBtnStatus.status}" name="watched" value="${result.id}">
+                    ${watchedBtnStatus.text}
                 </button>
-                <button class="cardFilm__button" id="queue" data-status="add" name="queue" value="${result.id}">
-                    Add to queue
+                <button class="cardFilm__button" id="queue" data-status="${queueBtnStatus.status}" name="queue" value="${result.id}">
+                    ${queueBtnStatus.text}
                 </button>
             </div>
         </div>
         <button type='button' class="modal-close-btn">X</button>
     </div>`;
-            console.log(markupOneCard);
+            //console.log(markupOneCard);
             const modal = basicLightbox.create(markupOneCard);
             
             modal.show();
@@ -131,12 +148,16 @@ function openModal(e){
     }
     else{
         //spinnerOff();
-        console.log("else");
+        //console.log("else");
     }
 }
 //-----------------------функція для виводу масиву жанрів в строчку--------------------
 function openGenrs(mass){
     return mass.map(gener=>gener.name).join(", ");
+}
+
+function setBtnStatus(btn,status){
+    btn.dataset=status;
 }
 
 //----------------------------------------------------------------------------------
