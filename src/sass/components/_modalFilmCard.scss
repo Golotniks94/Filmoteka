@@ -227,11 +227,16 @@
   text-transform: uppercase;
   line-height: 1.333;
   text-align: center;
-  height: 44px;
+  height: 55px;
   border: 1px solid rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   width: 134px;
+}
+@media screen and (min-width: 768px){
+  .cardFilm__button{
+    height: 44px;
+  }
 }
 
 #watched:focus ,
