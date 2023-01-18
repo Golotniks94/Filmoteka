@@ -1,29 +1,38 @@
-import { fetchSearchArticlesPages, fetchGenres } from './apiServis';
-import { createMovieCards } from './cardFetc';
+import NewApiService from './apiServis';
+import createMovieCards  from './cardFetc';
 import Notiflix from 'notiflix';
 import { spinnerOn, spinnerOff } from './spinner';
+import { createPagination } from './pagination';
+
 const refs = {
+  myForm: document.querySelector("#myForm"),
   moviesOnInputList: document.querySelector('.gallery'),
-  inputEl: document.querySelector('.form-search__input'),
+  inputEl: document.querySelector('#name-input'),
 };
 
-refs.inputEl.addEventListener('submit', searchHandler);
+refs.myForm.addEventListener('submit', searchHandler);
+const a=new NewApiService();
 
 async function searchHandler(e) {
   spinnerOn();
   e.preventDefault();
-  const query = e.currentTarget.elements.searchQuery.value;
+  const query = refs.inputEl.value;
+  console.log(query);
   if (query === ' ' || query === '') {
     Notiflix.Notify.failure('Please type search and try again.');
     return;
   }
-  const data = await fetchSearchArticlesPages(query);
+  a.searchQuery=query;
+  const data = await a.fetchSearchArticlesPages();
   refs.moviesOnInputList.innerHTML = '';
   if (data.total_results === 0) {
     Notiflix.Notify.failure('There is no such film');
     return;
   } else {
-    const genre = await fetchGenres().then(({ genres }) => {
+    //console.log(data.results);
+    /*const genre = await a.fetchGenres().then(({ genres }) => {
+      
+      console.log(genres);
       if (data.results) {
         data.results.forEach(movie => {
           const { genre_ids, release_date } = movie;
@@ -41,12 +50,64 @@ async function searchHandler(e) {
           });
         });
       }
-    });
-
-    createMovieCards(data.results);
+    });*/
+    //console.log(data.results);
+    await createMovieCards(data.results);
     spinnerOff();
+    createPagination(a.fetchSearchArticlesPages, a, a.total_results);
   }
 }
+
+
+// import { fetchSearchArticlesPages, fetchGenres } from './apiServis';
+// import { createMovieCards } from './cardFetc';
+// import Notiflix from 'notiflix';
+// import { spinnerOn, spinnerOff } from './spinner';
+// const refs = {
+//   moviesOnInputList: document.querySelector('.gallery'),
+//   inputEl: document.querySelector('.form-search__input'),
+// };
+
+// refs.inputEl.addEventListener('submit', searchHandler);
+
+// async function searchHandler(e) {
+//   spinnerOn();
+//   e.preventDefault();
+//   const query = e.currentTarget.elements.searchQuery.value;
+//   if (query === ' ' || query === '') {
+//     Notiflix.Notify.failure('Please type search and try again.');
+//     return;
+//   }
+//   const data = await fetchSearchArticlesPages(query);
+//   refs.moviesOnInputList.innerHTML = '';
+//   if (data.total_results === 0) {
+//     Notiflix.Notify.failure('There is no such film');
+//     return;
+//   } else {
+//     const genre = await fetchGenres().then(({ genres }) => {
+//       if (data.results) {
+//         data.results.forEach(movie => {
+//           const { genre_ids, release_date } = movie;
+//           genres.forEach(({ name, id }) => {
+//             if (genre_ids.includes(id)) {
+//               if (genre_ids.length > 2) {
+//                 genre_ids.splice(2, genre_ids.length - 1, 'Other');
+//               }
+//               genre_ids.splice(genre_ids.indexOf(id), 1, name);
+//             }
+//             movie.genre_names = genre_ids.join(', ');
+//             if (movie.release_date) {
+//               movie.release_date = release_date.slice(0, 4);
+//             }
+//           });
+//         });
+//       }
+//     });
+
+//     createMovieCards(data.results);
+//     spinnerOff();
+//   }
+// }
 
 // import { Notify } from "notiflix/build/notiflix-notify-aio";
 // import NewApiService from "./apiServis";
