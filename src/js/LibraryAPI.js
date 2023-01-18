@@ -12,9 +12,10 @@ export default class LibraryStorage{
             if(x<0){
                 this.storage.push(filmDataObject);
                 save(this.key,this.storage);
+                return "Your movie was added";
             }
             else{
-                return;
+                return "Such movie is already exists";
             }
         }
         else{
@@ -27,11 +28,25 @@ export default class LibraryStorage{
 
                 }
                 else{
-                    return;
+                    return false;
                 }
         }
     }
-
+    removeFilmByID(id){
+        if(this.initializationStorage()){
+            let x=this.storage.findIndex(elment=>elment.id===id);
+            console.log(x);
+            if(x>=0){
+                this.storage.splice(x,1);
+                console.log(this.storage);
+                save(this.key,this.storage);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
     initializationStorage(){
         this.storage=load(this.key);
         if(this.storage!==""&&this.storage!==undefined){
@@ -44,6 +59,10 @@ export default class LibraryStorage{
 
     loadFromStorage(){
         return load(this.key);
+    }
+
+    removeStorage(){
+        return remove(this.key);
     }
 }
 /*
