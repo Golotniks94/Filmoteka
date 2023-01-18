@@ -1,7 +1,7 @@
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import NewApiService from "./apiServis";
 import { createMovieCards } from './cardFetc';
-import { pagination } from './pagination';
+import * as pagination from './pagination';
 
 const newApiService = new NewApiService();
 
@@ -13,11 +13,11 @@ searchForm.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormReset() {
   if (newApiService.query !== '') {
-    refs.searchForm.reset();
+searchForm.reset();
     return;
   }
 }
-export async function onSearchFormSubmit(e) {
+async function onSearchFormSubmit(e) {
   e.preventDefault();
 
   newApiService.page = 1;
@@ -28,7 +28,7 @@ export async function onSearchFormSubmit(e) {
     return;
   }
 
-  const results = await newApiService.getSearchFilms();
+  const results = await newApiService.fetchSearchArticles();
   newApiService.totalResults = results.total_results;
   try {
     createMovieCards(results);
