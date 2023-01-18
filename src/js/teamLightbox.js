@@ -1,7 +1,9 @@
-const teamModalLink = document.querySelector("js-team-modal");
-const modalTeam = document.querySelector("[data-modal]");
+const openTeamModalLink = document.querySelector("js-team-modal");
+const modalTeam = document.querySelector("[data-team-modal]");
+const closeModalTeamBtn = document.querySelector("team-modal__close-btn")
 
-teamModalLink.addEventListener("click", openTeamModal);
+openTeamModalLink.addEventListener("click", openTeamModal);
+closeModalTeamBtn.addEventListener("click", openTeamModal);
 
 function openTeamModal (){
     modalTeam.classList.toggle("is-hidden");
