@@ -40,7 +40,7 @@ export default function createMovieCards(movieList) {
 
 export function fetchMovieList() {
   newApiService.fetchPopularArticles().then(({ results, total_results }) => {
-    newApiService.fetchGenres().then(list => {
+    newApiService.fetchGenres().then(list => { if(gallery!==null){
       results.map(result => {
         let x = result.genre_ids.map(id => {
           for (let i = 0; i < list.length; i++) {
@@ -49,13 +49,14 @@ export function fetchMovieList() {
               return id;
             }
           }
+        
         });
-
         result.genre_ids = x;
       });
       spinnerOff();
       createMovieCards(results);
       createPagination(fetchMovieList, newApiService, total_results);
+    }
     });
   });
 }
