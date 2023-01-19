@@ -9,6 +9,7 @@ const refs = {
   moviesOnInputList: document.querySelector('.gallery'),
   inputEl: document.querySelector('#name-input'),
 };
+if(refs.inputEl!==null){
 
 refs.myForm.addEventListener('submit', searchHandler);
 const a=new NewApiService();
@@ -30,7 +31,7 @@ async function searchHandler(e) {
     return;
   } else {
     //console.log(data.results);
-    /*const genre = await a.fetchGenres().then(({ genres }) => {
+    const genre = await a.fetchGenres().then(( genres ) => {
       
       console.log(genres);
       if (data.results) {
@@ -50,14 +51,14 @@ async function searchHandler(e) {
           });
         });
       }
-    });*/
+    });
     //console.log(data.results);
-    await createMovieCards(data.results);
+    createMovieCards(data.results);
     spinnerOff();
     createPagination(a.fetchSearchArticlesPages, a, a.total_results);
   }
 }
-
+}
 
 // import { fetchSearchArticlesPages, fetchGenres } from './apiServis';
 // import { createMovieCards } from './cardFetc';

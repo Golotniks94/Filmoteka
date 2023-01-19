@@ -7,6 +7,7 @@ const refs={
     queBTN:     document.querySelector("#queButton"),
     activeClass: "header-lib__btn--current",
 }
+if(refs.gallery!==null){
 
 const watchedStor=new LibraryStorage("Watched");
 const queueStor=new LibraryStorage("Queue");
@@ -77,4 +78,5 @@ function addClass(element,class_Name){
         return true;
     }
     return false;
+}
 }

@@ -40,10 +40,15 @@ let userEmailInputRef = document.querySelector('#userEmail');
 let libraryLinkRef = document.querySelector('#library-link');
 
 formButtonSignUpRef.disabled = true;
+if(logInButtonRef!==null){
+  logInButtonRef.addEventListener('click', onLoginBtnClick);
+}
+if(checkBoxRef!==null){checkBoxRef.addEventListener('change', onToggle);}
+if(logOutButtonRef!==null){logOutButtonRef.addEventListener('click', logOutHandler);}
+ // if(logInButtonRef!==null){}
+//logInButtonRef.addEventListener('click', onLoginBtnClick);
 
-logInButtonRef.addEventListener('click', onLoginBtnClick);
-checkBoxRef.addEventListener('change', onToggle);
-logOutButtonRef.addEventListener('click', logOutHandler);
+
 
 function onLoginBtnClick() {
   modalWindow.classList.remove('invis');
@@ -165,7 +170,7 @@ async function isUserAlreadyLogedIn() {
     }
   });
 }
-
+if(logInButtonRef!==null){
 function ifUserLoged() {
   const auth = getAuth(firebaseConfig);
 
@@ -179,3 +184,4 @@ function ifUserLoged() {
   });
 }
 ifUserLoged();
+}
