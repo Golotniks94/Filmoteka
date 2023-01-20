@@ -23,11 +23,15 @@ removeClass(refs.wathedBTN,refs.activeClass);
 if(queueStor.initializationStorage()==true||watchedStor.initializationStorage()===true){
     if(queueStor.initializationStorage()==true){
         refs.gallery.innerHTML=renderCardV2(queueStor.loadFromStorage());
+        refs.queBTN.value=1;
+        refs.wathedBTN.value=2;
         addClass(refs.queBTN,refs.activeClass);
     }
     else{
         refs.gallery.innerHTML=renderCardV2(watchedStor.loadFromStorage());
         addClass(refs.wathedBTN,refs.activeClass);
+        refs.queBTN.value=2;
+        refs.wathedBTN.value=1;
     }
 }
 else{
@@ -42,7 +46,9 @@ refs.wathedBTN.addEventListener("click",()=>{
     if(watchedStor.initializationStorage()===true){
         refs.gallery.innerHTML=renderCardV2(watchedStor.loadFromStorage());
         addClass(refs.wathedBTN,refs.activeClass);
+        refs.wathedBTN.value=1;
         removeClass(refs.queBTN,refs.activeClass);
+        refs.queBTN.value=2;
     }
     else{
         refs.gallery.innerHTML=noData;
@@ -56,6 +62,8 @@ refs.queBTN.addEventListener("click",()=>{
         refs.gallery.innerHTML=renderCardV2(queueStor.loadFromStorage());
         addClass(refs.queBTN,refs.activeClass);
         removeClass(refs.wathedBTN,refs.activeClass);
+        refs.queBTN.value=1;
+        refs.wathedBTN.value=2;
     }
     else{
         refs.gallery.innerHTML=noData;

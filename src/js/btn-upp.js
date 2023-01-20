@@ -7,7 +7,7 @@ upBtn.addEventListener('click', toPageTopOnClick);
 
 function hideElOnScroll(el) {
   return function hideOnScroll(e) {
-    if (pageYOffset < document.documentElement.clientHeight) {
+    if (window.scrollY < document.documentElement.clientHeight) {
       el.classList.add('visuallyhidden');
     } else {
       el.classList.remove('visuallyhidden');
