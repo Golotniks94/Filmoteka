@@ -12,20 +12,15 @@ export default class ApiData{
 
     //=================================================================================================
     async getByID(id){
-        //console.log(id);
+        console.log(id);
         spinnerOn();
-        var res;
         if(id!==null&&id!==undefined){
-            await this.getData(`${this.defURL}/${this.mediaType}/${id}?api_key=${this.defKEY}&language=en-US`).then(result=>{
-                //console.log(result);
-                res=result;
-            });
+            return await this.getData(`${this.defURL}/${this.mediaType}/${id}?api_key=${this.defKEY}&language=en-US`);
         }
         else{
             console.log(`ERROR id=${id}`);
-            res=false;
+            return false;
         }
-        return res;
     }
     //=================================================================================================
     async getPopularMovies(){
@@ -38,7 +33,11 @@ export default class ApiData{
     }
     //=================================================================================================
     async getData(query){
-        var result;
+        var result={
+            data: null,
+            status: 'error',
+            error: "axios don`t work ",
+        };
         await axios.get(query)
         .then(function (response) {
             // обробка успішного запиту
